@@ -1,10 +1,11 @@
 import RoomPage from "@/components/template/RoomPage";
 import rooms from "../../../../data/rooms.json";
 import Heading from "@/components/modules/Heading";
+import getSingleRoom from "@/actions/getSingleRoom";
 
-const Room = ({ params }) => {
+const Room = async ({ params }) => {
   const id = params.id;
-  const room = rooms.find((room) => room.$id === id);
+  const room = await getSingleRoom(id);
 
   if (!room) {
     return <Heading title="Room Not Found" />;
