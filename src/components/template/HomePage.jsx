@@ -1,8 +1,7 @@
-import rooms from "../../../data/rooms.json";
 import Heading from "../modules/Heading";
 import RoomCard from "../modules/RoomCard";
 
-const HomePage = () => {
+const HomePage = ({ rooms }) => {
   return (
     <>
       <Heading title="Available Rooms" />
@@ -16,4 +15,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-            

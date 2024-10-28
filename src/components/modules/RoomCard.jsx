@@ -24,7 +24,7 @@ const RoomCard = ({ room }) => {
           </p>
 
           <p className="text-sm text-gray-600">
-            <span className="font-semibold text-gray-800"> Availability:</span>
+            <span className="font-semibold text-gray-800"> Availability: </span>{" "}
             {room.availability}
           </p>
 

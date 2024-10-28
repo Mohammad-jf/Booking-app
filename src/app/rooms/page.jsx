@@ -1,5 +1,6 @@
 import RoomsPage from "@/components/template/RoomsPage";
 
+
 const Rooms = () => {
   return <RoomsPage />;
 };
