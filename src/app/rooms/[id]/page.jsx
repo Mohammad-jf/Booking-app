@@ -1,5 +1,4 @@
 import RoomPage from "@/components/template/RoomPage";
-import rooms from "../../../../data/rooms.json";
 import Heading from "@/components/modules/Heading";
 import getSingleRoom from "@/actions/getSingleRoom";
 
