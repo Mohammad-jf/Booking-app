@@ -1,6 +1,8 @@
 import Header from "@/components/layout/Header";
 import "../assets/styles/globals.css";
 import Footer from "@/components/layout/Footer";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const metadata = {
   title: "Booking app",
@@ -16,6 +18,7 @@ export default function RootLayout({ children }) {
           {children}
         </main>
         <Footer />
+        <ToastContainer />
       </body>
     </html>
   );
