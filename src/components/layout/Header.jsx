@@ -6,26 +6,17 @@ import destroySession from "@/actions/destroySession";
 import logo from "../../assets/images/logo.svg";
 import { FaUser, FaSignInAlt, FaSignOutAlt, FaBuilding } from "react-icons/fa";
 import { toast } from "react-toastify";
-import checkAuth from "@/actions/checkAuth";
-import { useEffect, useState } from "react";
+import { useAuth } from "@/context/authContext";
 
 const Header = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(null);
   const router = useRouter();
-
-  useEffect(() => {
-    const fetchAuthStatus = async () => {
-      const res = await checkAuth();
-      setIsAuthenticated(res.isAuthenticated);
-    };
-
-    fetchAuthStatus();
-  }, []);
+  const { isAuthenticated, setIsAuthenticated } = useAuth();
 
   const handleLogout = async () => {
     const { success, error } = await destroySession();
 
     if (success) {
+      setIsAuthenticated(false);
       router.push("login");
     } else {
       toast.error(error);
