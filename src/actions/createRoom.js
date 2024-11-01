@@ -6,7 +6,7 @@ import { revalidatePath } from "next/cache";
 
 async function createRoom(previousState, formData) {
   // get the databases instance
-  const { databases } = await createAdminClient();
+  const { databases, storage } = await createAdminClient();
 
   try {
     const { user } = await checkAuth();
@@ -14,6 +14,29 @@ async function createRoom(previousState, formData) {
       return {
         error: "you must be logged in to create a room",
       };
+    }
+
+    let imageId;
+
+    const image = formData.get("image");
+    // uploading image
+    if (image && image.size > 0 && image.name !== undefined) {
+      try {
+        const response = await storage.createFile(
+          process.env.NEXT_PUBLIC_APPWRITE_STORAGE_BUCKET_ROOMS,
+          ID.unique(),
+          image
+        );
+
+        imageId = response.$id;
+      } catch (error) {
+        console.log("error uploading image", error);
+        return {
+          error: "error uploading image",
+        };
+      }
+    } else {
+      console.log("no image file provided or file is invalid");
     }
 
     // create room
@@ -32,6 +55,7 @@ async function createRoom(previousState, formData) {
         availability: formData.get("availability"),
         price_per_hour: formData.get("price_per_hour"),
         amenities: formData.get("amenities"),
+        image: imageId,
       }
     );
 
