@@ -17,7 +17,7 @@ const Header = () => {
 
     if (success) {
       setIsAuthenticated(false);
-      router.push("login");
+      router.push("/login");
     } else {
       toast.error(error);
     }
