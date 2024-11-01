@@ -20,7 +20,7 @@ const LoginPage = () => {
     if (state.success) {
       toast.success("Logged in successfully");
       setIsAuthenticated(true);
-      router.push("/");
+      router.replace("/");
     }
   }, [state]);
 
