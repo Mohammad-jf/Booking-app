@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
 import { FaEye, FaTrash } from "react-icons/fa";
+import RoomDeleteButton from "./RoomDeleteButton";
 
 const MyRoomsCard = ({ room }) => {
   return (
@@ -13,12 +14,10 @@ const MyRoomsCard = ({ room }) => {
           href={`/rooms/${room.$id}`}
           className="bg-blue-500 text-white px-4 py-2 rounded mb-2 sm:mb-0 w-full sm:w-auto text-center hover:bg-blue-700"
         >
-          <FaEye /> View
+          <FaEye className="inline mr-1" /> View
         </Link>
 
-        <button className="bg-red-500 text-white px-4 py-2 rounded mb-2 sm:mb-0 w-full sm:w-auto text-center hover:bg-red-700">
-          <FaTrash /> Delete
-        </button>
+        <RoomDeleteButton roomId={room.$id} />
       </div>
     </div>
   );

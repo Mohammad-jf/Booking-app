@@ -9,8 +9,8 @@ async function getAllRooms() {
 
     // fetch rooms
     const { documents: rooms } = await databases.listDocuments(
-      process.env.NEXT_PUBLIC_APPWRITE_DATABASE,
-      process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ROOMS
+      process.env.NEXT_PUBLIC_APPWRITE_DATABASE, //database id
+      process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_ROOMS //collection id
     );
 
     // revalidate the cache for the path
