@@ -58,7 +58,7 @@ const RoomPage = ({ room }) => {
           </div>
         </div>
 
-        <BookingFrom />
+        <BookingFrom room={room} />
       </div>
     </>
   );
