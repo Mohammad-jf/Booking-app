@@ -4,7 +4,6 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { Query } from "node-appwrite";
 import { DateTime } from "luxon";
-import { to } from "./../../.next/static/chunks/[turbopack]_dev_client_38d6c6._";
 
 // convert date string to luxon DateTime object in utc
 function toUtcDateTime(dateString) {
