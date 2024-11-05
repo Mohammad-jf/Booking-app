@@ -8,7 +8,7 @@ import checkAuth from "./checkAuth";
 async function getMybookings() {
   const sessionCookie = cookies().get("appwrite-session");
   if (!sessionCookie) {
-    redirect("/");
+    redirect("/login");
   }
 
   try {
