@@ -1,4 +1,4 @@
-import BookingsPage from "@/components/template/BookingsPAge";
+import BookingsPage from "@/components/template/BookingsPage";
 
 const Bookings = () => {
   return <BookingsPage />;
