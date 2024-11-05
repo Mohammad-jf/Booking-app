@@ -5,10 +5,10 @@ import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
 import checkAuth from "./checkAuth";
 
-async function cancelBooking({ bookingId }) {
+async function cancelBooking(bookingId) {
   const sessionCookie = cookies().get("appwrite-session");
   if (!sessionCookie) {
-    redirect("/");
+    redirect("/login");
   }
 
   try {
@@ -21,13 +21,13 @@ async function cancelBooking({ bookingId }) {
       };
     }
 
-    const { documents: booking } = await databases.getDocument(
+    const booking = await databases.getDocument(
       process.env.NEXT_PUBLIC_APPWRITE_DATABASE,
       process.env.NEXT_PUBLIC_APPWRITE_COLLECTION_BOOKINGS,
       bookingId
     );
 
-    if (booking.user._id !== user.id) {
+    if (booking.user_id !== user.id) {
       return {
         error: "you are not authorize to cancel this booking",
       };

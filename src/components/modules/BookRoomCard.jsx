@@ -22,7 +22,7 @@ const BookRoomCard = ({ booking }) => {
         >
           View Room
         </Link>
-        <CancelBookingButton booking={booking} />
+        <CancelBookingButton bookingId={booking.$id} />
       </div>
     </div>
   );

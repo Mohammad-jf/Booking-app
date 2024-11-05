@@ -2,16 +2,25 @@
 import cancelBooking from "@/actions/cancelBooking";
 import { toast } from "react-toastify";
 
-const CancelBookingButton = ({ booking }) => {
+const CancelBookingButton = ({ bookingId }) => {
   const handleCancel = async () => {
-    const res = await cancelBooking(booking.$id);
-
-    if (res.error) {
-      toast.error(res.error);
+    const confirm = window.confirm("are you sure you want to cancel ?");
+    if (!confirm) {
+      return;
     }
 
-    if (res.success) {
-      toast.success("Booking canceld successfully");
+    try {
+      const res = await cancelBooking(bookingId);
+
+      if (res.error) {
+        toast.error(res.error);
+      }
+
+      if (res.success) {
+        toast.success("Booking canceld successfully");
+      }
+    } catch (error) {
+      console.log("failed to cancel booking", error);
     }
   };
 
